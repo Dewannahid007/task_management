@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[TasksController::class,'index'])->name('index');
+Route::get('/createTasksForm',[TasksController::class,'createTasksForm']);
+Route::post('/createNewTask',[TasksController::class,'createNewTask'])->name('createNewTask');
+
+Route::get('/editTasksForm/{id}',[TasksController::class,'editTasksForm'])->name('editTasksForm');
+
+
 

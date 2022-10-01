@@ -85,24 +85,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($tasks as $task)
                                                 <tr>
-                                                    <td class="serial"></td>
-                                                   
-                                                    <td>  <span class="name"></span> </td>
-                                                    <td> <span class="product"></span> </td>
-                                                    <td><span class="count"></span></td>
+                                                    <td class="serial">{{$task->id}}</td>
+                                                    <td>  <span class="name">{{$task->title}}</span> </td>
+                                                    <td> <span class="product">{{$task->description}}</span> </td>
+                                                    <td><span class="count">{{$task->progress}}</span></td>
                                                     <td>
-                                                        <span class="badge badge-pending" style="background:blue"></span>
-                                                        <span class="badge badge-pending" style="background:brown"></span>
+                                                        <span class="badge badge-pending"> {{$task->status}}</span>
                                                     </td>
                                                     <td>
-                                                        <span class="badge badge-complete"><a style="color:white" href=""> Edit </a></span>
+                                                        <span class="badge badge-complete"><a style="color:white" href="{{route('editTasksForm',['id'=>$task->id])}}"> Edit </a></span>
                                                     </td>
 
-                                            
                                                 </tr>
+                                                @endforeach
                                                 
-                                               
                                             </tbody>
                                         </table>
                                     </div> <!-- /.table-stats -->
@@ -113,14 +111,10 @@
                 </div>
                 <!-- /.orders -->
             
-
-        
-
             </div>
             <!-- .animated -->
         </div>
         <!-- /.content -->
         <div class="clearfix"></div>
-
 
 @endsection
