@@ -41,4 +41,21 @@ class TasksController extends Controller
         return view('editTasksForm',['task'=>$task]);
 
     }
+    public function editTask(Request $request){
+        $id= $request->input('id');
+        $title= $request->input('title');
+        $description=$request->input('description');
+        $status= $request->input('status');
+        $progress= $request->input('progress');
+
+        $editTask=DB::table('tasks')->where('id',$id)->update([
+            'title'=>$title,
+            'description'=>$description,
+            'status'=>$status,
+            'progress'=>$progress
+
+        ]);
+        return redirect('/');
+
+    }
 }

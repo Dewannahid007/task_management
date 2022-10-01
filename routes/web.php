@@ -29,6 +29,5 @@ Route::get('/createTasksForm',[TasksController::class,'createTasksForm']);
 Route::post('/createNewTask',[TasksController::class,'createNewTask'])->name('createNewTask');
 
 Route::get('/editTasksForm/{id}',[TasksController::class,'editTasksForm'])->name('editTasksForm');
-
-
+Route::post('/editTask',[TasksController::class,'editTask'])->name('editTask');
 

@@ -12,8 +12,9 @@
                         <div class="card">
                             <div class="card-header"><strong>Tasks</strong><small> Form</small></div>
                             <div class="card-body card-block">
-                                <form action="{{route('createNewTask')}}" method="post">
+                                <form action="{{route('editTask')}}" method="post">
                                     {{csrf_field()}}
+                                    <input type="hidden" name="id" value="{{$task->id}}">
                                 <div class="form-group"><label for="title" class=" form-control-label">Title</label><input type="text" id="company" value="{{$task->title}}"  name="title" placeholder="Enter task title" class="form-control"></div>
                                 <div class="form-group"><label for="description" class=" form-control-label">Description</label><input type="text" id="vat" value="{{$task->description}}" name="description" placeholder="Enter description for task" class="form-control"></div>
 
@@ -21,8 +22,13 @@
                                         <div class="col col-md-3"><label for="select" class=" form-control-label">Status</label></div>
                                         <div class="col-12 col-md-9">
                                             <select  id="select" class="form-control"  name="status">
-                                                <option value="In Progress">In progress</option>
-                                                <option value="Completed">Completed</option>
+                                                @if($task->status == 'In progress')
+                                                <option value="In progress" selected>In progress</option>
+                                                <option value="complete">Completed</option>
+                                                 @else
+                                                <option value="complete" selected>Completed</option>
+                                                <option value="In progress">In progress</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
@@ -32,7 +38,7 @@
                                 <div class="form-group"><label for="progress" class=" form-control-label">Progress</label><input type="number" id="progress" value="{{$task->progress}}" name="progress" placeholder="Progress %" class="form-control"></div>
 
                                   <div class="form-group">
-                                      <button class="btn btn-primary" type="submit" value="edit">Edit</button>
+                                      <button class="btn btn-primary" type="submit" value="edit">Update</button>
                                   </div>
                                 </form>
                             </div>

@@ -92,7 +92,12 @@
                                                     <td> <span class="product">{{$task->description}}</span> </td>
                                                     <td><span class="count">{{$task->progress}}</span></td>
                                                     <td>
-                                                        <span class="badge badge-pending"> {{$task->status}}</span>
+                                                        @if($task->status == 'complete' )
+                                                        <span class="badge badge-pending" style="background:blue;"> {{$task->status}}</span>
+                                                        @else
+                                                        <span class="badge badge-pending" style="background: browngir;"> {{$task->status}}</span>
+                                                        @endif
+
                                                     </td>
                                                     <td>
                                                         <span class="badge badge-complete"><a style="color:white" href="{{route('editTasksForm',['id'=>$task->id])}}"> Edit </a></span>
