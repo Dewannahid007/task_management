@@ -78,15 +78,16 @@
                     <li class="menu-title">Options</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Management</a>
-                        <ul class="sub-menu children dropdown-menu">                            <li><i class="fa fa-puzzle-piece"></i><a href="">Add new task</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href=" ">Edit tasks</a></li>  
+                        <ul class="sub-menu children dropdown-menu">                            
+                            <li><i class="fa fa-puzzle-piece"></i><a href="{{route('createTasksForm')}}">Add new task</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="{{route('editAlltasks')}}">Edit tasks</a></li>  
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Information</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="">Completed Tasks</a></li>
-                            <li><i class="fa fa-table"></i><a href="">In Progress Tasks</a></li>
+                            <li><i class="fa fa-table"></i><a href="{{route('CompletedTasks')}}">Completed Tasks</a></li>
+                            <li><i class="fa fa-table"></i><a href="{{route('InprogressTasks')}}">In Progress Tasks</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">

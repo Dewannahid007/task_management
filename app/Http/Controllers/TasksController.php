@@ -12,8 +12,11 @@ class TasksController extends Controller
     public function index(Request $request){
 
        $tasks= DB::table('tasks')->get();
-        
-        return view('index',['tasks'=>$tasks]);
+       $completedTasks=DB::table('tasks')->where('status','complete')->get()->count();
+       $inprogressTasks=DB::table('tasks')->where('status','In progress')->get()->count();
+
+        $totalTasks = $tasks->count();
+        return view('index',['tasks'=>$tasks,'totalTasks'=>$totalTasks,'completedTasks'=>$completedTasks,'inprogressTasks'=>$inprogressTasks]);
 
     }
 
@@ -56,6 +59,26 @@ class TasksController extends Controller
 
         ]);
         return redirect('/');
+
+    }
+    public function editAllTasks(Request $request){
+        $tasks = DB::table('tasks')->get();
+        return view('editAllTasks',['tasks'=>$tasks]);
+    }
+
+    public function deleteTask(Request $request,$id){
+        DB::table('tasks')->where('id',$id)->delete();
+        return redirect('/');
+    }
+
+    public function InprogressTasks(Request $request){
+       $tasks= DB::table('tasks')->where('status','In Progress')->get();
+       return view('specificTasks',['tasks'=>$tasks]);
+
+    }
+    public function CompletedTasks(Request $request){
+        $tasks= DB::table('tasks')->where('status','complete')->get();
+        return view('specificTasks',['tasks'=>$tasks]);
 
     }
 }

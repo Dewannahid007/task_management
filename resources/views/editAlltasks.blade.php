@@ -4,61 +4,6 @@
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-network"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$totalTasks}}</span></div>
-                                            <div class="stat-heading">Total</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-like2"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$completedTasks}}</span></div>
-                                            <div class="stat-heading">Completed</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$inprogressTasks}}</span></div>
-                                            <div class="stat-heading">In progress</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- /Widgets -->
                
                 <div class="clearfix"></div>
@@ -82,6 +27,7 @@
                                                     <th>Progress</th>
                                                     <th>Status</th>
                                                     <th>Edit</th>
+                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -96,11 +42,14 @@
                                                         <span class="badge badge-pending" style="background:blue;"> {{$task->status}}</span>
                                                         @else
                                                         <span class="badge badge-pending" style="background: brown;"> {{$task->status}}</span>
-                                                        @endif 
+                                                        @endif
 
                                                     </td>
                                                     <td>
                                                         <span class="badge badge-complete"><a style="color:white" href="{{route('editTasksForm',['id'=>$task->id])}}"> Edit </a></span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="background: red;" class="badge badge-complete"><a style="color:white;" onclick="return confirm('Are you sure?')" href="{{route('deleteTask',['id'=>$task->id])}}"> Delete </a></span>
                                                     </td>
 
                                                 </tr>
@@ -122,4 +71,4 @@
         <!-- /.content -->
         <div class="clearfix"></div>
 
-@endsection
+@endsection 

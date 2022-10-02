@@ -25,9 +25,13 @@ Route::middleware([
 });
 
 Route::get('/',[TasksController::class,'index'])->name('index');
-Route::get('/createTasksForm',[TasksController::class,'createTasksForm']);
+Route::get('/createTasksForm',[TasksController::class,'createTasksForm'])->name('createTasksForm');
 Route::post('/createNewTask',[TasksController::class,'createNewTask'])->name('createNewTask');
-
 Route::get('/editTasksForm/{id}',[TasksController::class,'editTasksForm'])->name('editTasksForm');
 Route::post('/editTask',[TasksController::class,'editTask'])->name('editTask');
+Route::get('/editAllTasks',[TasksController::class,'EditAllTasks'])->name('editAlltasks');
+route::get('/deleteTask/{id}',[TasksController::class,'deleteTask'])->name('deleteTask');
+
+route::get('/CompletedTasks',[TasksController::class,'CompletedTasks'])->name('CompletedTasks');
+route::get('/InprogressTasks',[TasksController::class,'InprogressTasks'])->name('InprogressTasks');
 
